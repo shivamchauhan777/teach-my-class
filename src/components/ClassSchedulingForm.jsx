@@ -13,19 +13,8 @@ import {
 import { toast } from "@/hooks/use-toast";
 import { Calendar, Clock, BookOpen, Building, Users, MapPin } from "lucide-react";
 
-interface FormData {
-  department: string;
-  course: string;
-  year: string;
-  subject: string;
-  academicBlock: string;
-  lectureTime: string;
-  topic: string;
-  roomNumber: string;
-}
-
 const ClassSchedulingForm = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     department: "",
     course: "",
     year: "",
@@ -84,7 +73,7 @@ const ClassSchedulingForm = () => {
     "5:00 PM - 6:00 PM",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     // Basic validation
@@ -108,7 +97,7 @@ const ClassSchedulingForm = () => {
     console.log("Form submitted:", formData);
   };
 
-  const updateFormData = (field: keyof FormData, value: string) => {
+  const updateFormData = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
